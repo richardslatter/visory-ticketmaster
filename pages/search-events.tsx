@@ -7,8 +7,44 @@ interface EventSearchForm {
     countryCode: string;
 }
 
+interface Event {
+    name: string;
+    url: string;
+    dates: {
+        start: {
+            localDate: string;
+        };
+    };
+    _embedded: {
+        venues: Array<{
+            name: string;
+            city: {
+                name: string;
+            };
+        }>;
+    };
+}
+
+const EventItem = ({ event }: { event: Event }) => {
+    const eventName = event.name;
+    const eventUrl = event.url;
+    const eventDate = event.dates.start.localDate;
+    const venueName = event._embedded.venues[0].name;
+    const venueCity = event._embedded.venues[0].city.name;
+
+    return (
+        <li className={styles.eventItem}>
+            <a href={eventUrl} target="_blank" className={styles.eventLink}>
+                {eventName}
+            </a>
+            <p className={styles.eventDetails}>Date: {eventDate}</p>
+            <p className={styles.eventDetails}>Location: {venueName}, {venueCity}</p>
+        </li>
+    );
+};
+
 const SearchEvents = () => {
-    const [formData, setFormData] = useState<EventSearchForm>({ startTime: '', endTime: '', countryCode: 'US' });
+    const [formData, setFormData] = useState<EventSearchForm>({ startTime: '', endTime: '', countryCode: 'AU' });
     const [events, setEvents] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -64,7 +100,7 @@ const SearchEvents = () => {
     };
 
     return (
-        <div className={styles.container}> {/* Use the class from CSS module */}
+        <div className={styles.container}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>
                     <label htmlFor="startTime" className={styles.label}>Start Time:</label>
@@ -180,9 +216,9 @@ const SearchEvents = () => {
             </form>
             {isLoading && <p className={styles.loading}>Loading...</p>}
             {error && <p className={styles.error}>{error}</p>}
-            <ul>
+            <ul className={styles.eventsList}>
                 {events.map(event => (
-                    <li key={event.id}>{event.name}</li>
+                    <EventItem key={event.id} event={event} />
                 ))}
             </ul>
         </div>
