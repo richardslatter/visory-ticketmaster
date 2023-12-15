@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './search-events.module.css'
 
 interface EventSearchForm {
     startTime: string;
@@ -31,7 +32,7 @@ const SearchEvents = () => {
         if (formData.startTime) {
             queryParams.append('startDateTime', `${formData.startTime}:00Z`);
         }
-        
+
         if (formData.endTime) {
             queryParams.append('endDateTime', `${formData.endTime}:00Z`);
         }
@@ -63,17 +64,33 @@ const SearchEvents = () => {
     };
 
     return (
-        <div>
+        <div className={styles.container}> {/* Use the class from CSS module */}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="startTime">Start Time:</label>
-                    <input type="datetime-local" id="startTime" name="startTime" value={formData.startTime} onChange={handleChange} />
+                <div className={styles.formGroup}>
+                    <label htmlFor="startTime" className={styles.label}>Start Time:</label>
+                    <input
+                        type="datetime-local"
+                        id="startTime"
+                        name="startTime"
+                        value={formData.startTime}
+                        onChange={handleChange}
+                        className={styles.input}
+                    />
                 </div>
-                <div>
-                    <label htmlFor="endTime">End Time:</label>
-                    <input type="datetime-local" id="endTime" name="endTime" value={formData.endTime} onChange={handleChange} />
+                <div className={styles.formGroup}>
+                    <label htmlFor="endTime" className={styles.label}>End Time:</label>
+                    <input
+                        type="datetime-local"
+                        id="endTime"
+                        name="endTime"
+                        value={formData.endTime}
+                        onChange={handleChange}
+                        className={styles.input}
+                    />
                 </div>
-                <select name="countryCode" value={formData.countryCode} onChange={handleChange}>
+                <div className={styles.formGroup}>
+                    <label htmlFor="countryCode" className={styles.label}>Country:</label>
+                    <select name="countryCode" value={formData.countryCode} onChange={handleChange} className={styles.select}>
                     <option value="US">United States Of America</option>
                     <option value="AD">Andorra</option>
                     <option value="AI">Anguilla</option>
@@ -158,10 +175,11 @@ const SearchEvents = () => {
                     <option value="UY">Uruguay</option>
                     <option value="VE">Venezuela</option>
                 </select>
-                <button type="submit">Search Events</button>
+                </div>
+                <button type="submit" className={styles.button}>Search Events</button>
             </form>
-            {isLoading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
+            {isLoading && <p className={styles.loading}>Loading...</p>}
+            {error && <p className={styles.error}>{error}</p>}
             <ul>
                 {events.map(event => (
                     <li key={event.id}>{event.name}</li>

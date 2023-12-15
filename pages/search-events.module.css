@@ -1,0 +1,77 @@
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 400px;
+}
+
+.formGroup {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.input,
+.select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input {
+    width: 95%;
+    padding-right: 10px;
+}
+
+.select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 20px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #3797ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #307dd1;
+}
+
+.loading,
+.error {
+    font-weight: bold;
+    text-align: center;
+}
+
+.eventList {
+    list-style: none;
+    padding: 0;
+}
+
+.eventList li {
+    margin-bottom: 5px;
+    text-align: center;
+}
