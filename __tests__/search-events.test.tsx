@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import SearchEvents, { EventItem } from '../pages/search-events';
+import SearchEvents, { EventItem } from '../pages';
 import '@testing-library/jest-dom';
 
 global.fetch = jest.fn((url) => {
