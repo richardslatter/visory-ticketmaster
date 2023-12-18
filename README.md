@@ -49,3 +49,5 @@ This starts the application on `http://localhost:3000`. Open this URL in your br
 - Search for events using start and end times, and country code.
 - Display a list of events matching the search criteria.
 - Navigate to event details via provided links.
+
+<img width="344" alt="app" src="https://github.com/richardslatter/visory-ticketmaster/assets/104472340/a037a69c-a7af-487d-9053-eb967067a882">
